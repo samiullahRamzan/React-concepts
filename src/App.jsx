@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import "./App.css";
 import Counts from "./Components/Counts";
 import Users from "./Components/Users";
+import SearchComponent from "./Components/SearchComponent";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -54,6 +55,7 @@ function App() {
         update User
       </button> */}
       {/* <Users users={user} /> */}
+      <SearchComponent />
       <Counts ref={forwardref} />
     </div>
   );
