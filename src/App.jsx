@@ -34,16 +34,17 @@ function App() {
   return (
     <div>
       <h2>
-        Here is user value: {JSON.stringify(user)}: here is also count:{count}
+        main: Here is user value: {JSON.stringify(user)}: here is also count:
+        {count}
       </h2>
       <p>Component re-rendered {renderCount.current} times</p>
-      <button onClick={() => setCount(count + 1)} className="button">
+      {/* <button onClick={() => setCount(count + 1)} className="button">
         Increment
-      </button>
-      <button onClick={callChildFunction} className="button">
+      </button> */}
+      {/* <button onClick={callChildFunction} className="button">
         CallChildFunction
-      </button>
-      {/* <button
+      </button> */}
+      <button
         onClick={() =>
           setUser((prevState) => ({
             ...prevState,
@@ -53,10 +54,32 @@ function App() {
         className="button"
       >
         update User
-      </button> */}
-      {/* <Users users={user} /> */}
-      <SearchComponent />
-      <Counts ref={forwardref} />
+      </button>
+      <button
+        onClick={() =>
+          setUser((prevState) => ({
+            ...prevState,
+            phone: "03070052179",
+          }))
+        }
+        className="button"
+      >
+        update User with new property
+      </button>
+      <button
+        onClick={() =>
+          setUser((prevState) => ({
+            ...prevState,
+            university: "comsats",
+          }))
+        }
+        className="button"
+      >
+        update User with another new property
+      </button>
+      <Users users={user} />
+      {/* <SearchComponent /> */}
+      {/* <Counts ref={forwardref} /> */}
     </div>
   );
 }
