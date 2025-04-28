@@ -14,6 +14,7 @@ const Users = ({ users }) => {
         {ref.current} times
       </h3>
       <h3>child: here is users : {JSON.stringify(users)}</h3>
+      <button>callacParentFunction</button>
     </div>
   );
 };
@@ -29,9 +30,12 @@ export default memo(Users, (oldProps, newProps) => {
   if (oldKeys.length !== newKeys.length) {
     return false;
   }
+  const isUserSame = oldKeys.every(
+    (key) => oldProps.users[key] === newProps.users[key]
+  );
 
-  // Then, compare the key-value pairs
-  return oldKeys.every((key) => {
-    return oldProps.users[key] === newProps.users[key];
-  });
+  // ✅ Compare function references
+  const isFunctionSame = oldProps.calculateCount === newProps.calculateCount;
+
+  return isUserSame && isFunctionSame;
 });
