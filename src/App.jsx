@@ -3,6 +3,8 @@ import "./App.css";
 import Counts from "./Components/Counts";
 import Users from "./Components/Users";
 import SearchComponent from "./Components/SearchComponent";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchtodo } from "./Redux/Features/Todoslice.js";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -86,9 +88,19 @@ function App() {
   //   </div>
   // );
 
+  const dispatch = useDispatch();
+
+  const fetchToDo = () => {
+    dispatch(fetchtodo());
+  };
+
+  const state = useSelector((state) => state.todo);
+
+  console.log("here is a state", state);
+
   return (
     <div>
-      <button>Fetchtodos</button>
+      <button onClick={fetchToDo}>Fetchtodos</button>
     </div>
   );
 }
